@@ -1,0 +1,33 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="PruebaXamarin.Pages.LoginPage"
+             Title="Xamarin"
+             BindingContext="{Binding Main, Source={StaticResource Locator}}">
+
+
+    <ScrollView>
+        <StackLayout>
+            <Label
+                Text="Email address">
+            </Label>
+            <Entry
+                Placeholder="Enter email address..."
+                Text="{Binding login.email, Mode=TwoWay}">
+            </Entry>
+            <Label
+                Text="Phone number">
+            </Label>
+            <Entry
+                Placeholder="Enter phone number..."
+                Text="{Binding login.password, Mode=TwoWay}">
+            </Entry>
+            <StackLayout>
+                <Button HorizontalOptions="Center" VerticalOptions="Center" Command="{Binding LoginCommand}" Text="iniciar">
+                </Button>
+            </StackLayout>
+        </StackLayout>
+    </ScrollView>
+
+
+</ContentPage>

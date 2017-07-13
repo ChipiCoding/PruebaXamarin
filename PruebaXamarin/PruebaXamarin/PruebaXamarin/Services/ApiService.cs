@@ -2,6 +2,7 @@
 {
     using Newtonsoft.Json;
     using PruebaXamarin.Classes;
+    using PruebaXamarin.Models;
     using System;
     using System.Collections.Generic;
     using System.Net.Http;
@@ -9,36 +10,76 @@
     using System.Threading.Tasks;
     public class ApiService
     {
-        public async Task<Response> Get<T>(string urlBase, string servicePrefix, string controller, Login login)
+        public string urlBase = "http://directotesting.igapps.co";
+        public async Task<Response> Autenticate<T>(string servicePrefix, string controller, Login login)
         {
             try
-            {
-                var client = new HttpClient();
-                client.BaseAddress = new Uri(urlBase);
-                //"http://directotesting.igapps.co/application/login?email=directo@directo.com&password=directo123";
-                var url = string.Format("{0}{1}?email={2}&password={3}", servicePrefix, controller, login.email, login.password);
-                var response = await client.GetAsync(url);
-
-                if (!response.IsSuccessStatusCode)
+            {                
+                using (HttpClient client = new HttpClient())
                 {
+                    client.BaseAddress = new Uri(urlBase);                    
+                    string url = string.Format("{0}{1}?email={2}&password={3}", servicePrefix, controller, login.email, login.password);
+                    HttpResponseMessage responseService = await client.GetAsync(url);
+
+                    if (!responseService.IsSuccessStatusCode)
+                    {
+                        return new Response
+                        {
+                            IsSuccess = false,
+                            Message = responseService.StatusCode.ToString(),
+                        };
+                    }
+                    string result = await responseService.Content.ReadAsStringAsync();
                     return new Response
                     {
-                        IsSuccess = false,
-                        Message = response.StatusCode.ToString(),
-                    };
+                        IsSuccess = true,
+                        Message = "Ok",
+                        Result = JsonConvert.DeserializeObject<Autorization>(result),
+                    }; 
                 }
-
-                var result = await response.Content.ReadAsStringAsync();
-                var list = JsonConvert.DeserializeObject<List<T>>(result);
-                return new Response
-                {
-                    IsSuccess = true,
-                    Message = "Ok",
-                    Result = list,
-                };
             }
             catch (Exception ex)
             {
+                return new Response
+                {
+                    IsSuccess = false,
+                    Message = ex.Message,
+                };
+            }
+        }
+
+        public async Task<Response>GetProspects(string servicePrefix, string file, Autorization login)
+        {
+            try
+            {                
+                using (HttpClient client = new HttpClient())
+                {
+                    HttpResponseMessage responseService;
+                    if (!string.IsNullOrWhiteSpace(login.authToken))
+                    {                      
+                        client.DefaultRequestHeaders.Clear();
+                        client.DefaultRequestHeaders.Add("token", login.authToken);
+                    }
+                    responseService = await client.GetAsync(string.Format("{0}{1}{2}", urlBase, servicePrefix, file));
+                    string result = responseService.Content.ReadAsStringAsync().Result;
+                    if (!responseService.IsSuccessStatusCode)
+                    {
+                        return new Response
+                        {
+                            IsSuccess = false,
+                            Message = responseService.StatusCode.ToString(),
+                        };
+                    }
+                    return new Response
+                    {
+                        IsSuccess = true,
+                        Message = "Ok",
+                        Result = JsonConvert.DeserializeObject<List<Prospect>>(result),
+                    };
+                }
+            }
+            catch (Exception ex)
+            {                
                 return new Response
                 {
                     IsSuccess = false,
@@ -73,7 +114,7 @@
                 return new Response
                 {
                     IsSuccess = true,
-                    Message = "Record added OK",
+                    Message = "Registro agregado",
                     Result = newRecord,
                 };
             }
@@ -113,7 +154,7 @@
                 return new Response
                 {
                     IsSuccess = true,
-                    Message = "Record updated OK",
+                    Message = "Registro actualizado",
                     Result = newRecord,
                 };
             }
@@ -148,7 +189,7 @@
                 return new Response
                 {
                     IsSuccess = true,
-                    Message = "Record deleted OK",
+                    Message = "Registro borrado",
                 };
             }
             catch (Exception ex)
@@ -161,86 +202,5 @@
             }
         }
 
-        public async Task<Response> Autenticate<T>(string servicePrefix, string controller, Login model)
-        {
-            try
-            {
-                //var client = new HttpClient();
-                //client.BaseAddress = new Uri("http://directotesting.igapps.co/");
-                //var url = string.Format("{0}{1}", servicePrefix, controller);
-                //var formcontent = new FormUrlEncodedContent(new[]
-                //{
-                //        new KeyValuePair<string,string>("email_id", model,em),
-                //        new KeyValuePair<string, string>("password","shah")
-                //    });
-                //var response = await client.GetAsync(url);
-
-                //if (!response.IsSuccessStatusCode)
-                //{
-                //    return new Response
-                //    {
-                //        IsSuccess = false,
-                //        Message = response.StatusCode.ToString(),
-                //    };
-                //}
-
-                //var result = await response.Content.ReadAsStringAsync();
-                //var list = JsonConvert.DeserializeObject<List<T>>(result);
-                //return new Response
-                //{
-                //    IsSuccess = true,
-                //    Message = "Ok",
-                //    Result = list,
-                //};
-
-                //using (var c = new HttpClient())
-                //{
-                //    var client = new System.Net.Http.HttpClient();
-                //    var jsonRequest = new { email = model.email, password = model.password };
-
-                //    var serializedJsonRequest = JsonConvert.SerializeObject(jsonRequest);
-                //    HttpContent content = new StringContent(serializedJsonRequest, Encoding.UTF8, "application/login");
-
-                //    var response = await client.PostAsync(new Uri("http://directotesting.igapps.co/app"), content);
-
-                //    if (response.IsSuccessStatusCode)
-                //    {
-                //        var result = JsonConvert.DeserializeObject(response.Content.ReadAsStringAsync().Result);
-                        
-                //    }
-                //}
-
-
-                using (var cl = new HttpClient())
-                {
-                    var formcontent = new FormUrlEncodedContent(new[]
-                    {
-                        new KeyValuePair<string,string>("email", model.email),
-                        new KeyValuePair<string, string>("password", model.password)
-                });
-
-
-                    var request = await cl.PostAsync("http://directotesting.igapps.co/application/login", formcontent);
-
-                    request.EnsureSuccessStatusCode();
-
-                    var response = await request.Content.ReadAsStringAsync();
-
-                    Response res = JsonConvert.DeserializeObject<Response>(response);
-
-                    return res;
-
-                }
-
-            }
-            catch (Exception ex)
-            {
-                return new Response
-                {
-                    IsSuccess = false,
-                    Message = ex.Message,
-                };
-            }
-        }
     }
 }

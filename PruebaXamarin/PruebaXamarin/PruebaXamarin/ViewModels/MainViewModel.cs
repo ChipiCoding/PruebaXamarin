@@ -1,23 +1,17 @@
-﻿using GalaSoft.MvvmLight.Command;
-using PruebaXamarin.Classes;
-using PruebaXamarin.Services;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Input;
-
-namespace PruebaXamarin.ViewModels
+﻿namespace PruebaXamarin.ViewModels
 {
+    using GalaSoft.MvvmLight.Command;
+    using PruebaXamarin.Classes;
+    using PruebaXamarin.Services;
+    using System.Text.RegularExpressions;
+    using System.Windows.Input;
+
     public class MainViewModel
     {
         #region Attributes
         private ApiService apiService;
         private DialogService dialogService;
-
         public LoginViewModel login { get; set; }
-
         private static MainViewModel instance;
         internal static MainViewModel GetInstance()
         {
@@ -28,39 +22,52 @@ namespace PruebaXamarin.ViewModels
 
             return instance;
         }
-
-        private NavigationService navigationService;
-        //private LoginViewModel login;
-
+        private NavigationService navigationService;        
         public DialogService DialogService { get => dialogService; set => dialogService = value; }
 
         public ICommand LoginCommand { get { return new RelayCommand(Login); } }
 
         private async void Login()
         {
-            //if (login == null)
-            //{
-                login = new LoginViewModel { email = "directo@directo.com", password = "directo123" }; 
-            //}            
+#if DEBUG
+            login = new LoginViewModel { email = "directo@directo.com", password = "directo123" }; 
+#endif        
             if (string.IsNullOrEmpty(login.email))
             {
                 await dialogService.ShowMessage("Error", "El correo es obligatorio.");
                 return;
             }
-
-            if (string.IsNullOrEmpty(login.password))
-            {
-                await dialogService.ShowMessage("Error", "La clave es obligatoria");
-                return;
-            }
-
-            ValidateLogin();
+            else
+            {               
+                Regex regex = new Regex(@"^([\w\.\-]+)@([\w\-]+)((\.(\w){2,3})+)$");
+                Match match = regex.Match(login.email);
+                if (!match.Success)
+                    await dialogService.ShowMessage("Error", "El correo no es correcto.");
+                else
+                {
+                    if (string.IsNullOrEmpty(login.password))
+                    {
+                        await dialogService.ShowMessage("Error", "La clave es obligatoria");
+                        return;
+                    }
+                    else
+                        ValidateLogin();
+                }
+            }            
         }
 
         private async void ValidateLogin()
+        {            
+            Response responseAutentication = await apiService.Autenticate<Response>("/application", "/login", login);
+            if (responseAutentication.IsSuccess)
+            {
+                GetProspects(responseAutentication.Result as Autorization);
+            }
+        }
+
+        private async void GetProspects(Autorization autentication)
         {
-            //var response = await apiService.Autenticate<Response>("/application", "/login", login);
-            var response1 = await apiService.Get<Response>("http://directotesting.igapps.co/", "/application", "/login", login);
+            Response response = await apiService.GetProspects("/sch", "/prospects.json", autentication);
         }
         #endregion
         public MainViewModel()

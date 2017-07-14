@@ -12,8 +12,11 @@
                 case "LoginPage":
                     await App.Current.MainPage.Navigation.PushAsync(new LoginPage());
                     break;
-                case "ProspectsPage":                    
+                case "ProspectsPage":
                     await App.Current.MainPage.Navigation.PushAsync(new ProspectsPage());
+                    break;
+                case "EditProspectPage":
+                    await App.Current.MainPage.Navigation.PushAsync(new EditProspectPage());
                     break;
                 default:
                     break;

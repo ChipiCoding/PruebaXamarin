@@ -1,0 +1,48 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="PruebaXamarin.Pages.EditProspectPage"
+             Title="Edit Prospect"
+             BindingContext="{Binding Main, Source={StaticResource Locator}}">
+
+
+
+    <StackLayout Padding="0,20,20,0">
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto*"></ColumnDefinition>
+                <ColumnDefinition Width="*"></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+            <StackLayout>
+                <Label FontSize="Micro" FontAttributes="Bold" TextColor="DarkBlue" VerticalOptions="Center" Text="Name"/>
+                <Label FontSize="Micro" FontAttributes="Bold" TextColor="DarkBlue" VerticalOptions="Center" Text="Surname"/>
+                <Label FontSize="Micro" FontAttributes="Bold" TextColor="DarkBlue" VerticalOptions="Center" Text="Telephone"/>
+                <Label FontSize="Micro" FontAttributes="Bold" TextColor="DarkBlue" VerticalOptions="Center" Text="Prospect Identification"/>
+                <Label FontSize="Micro" FontAttributes="Bold" TextColor="DarkBlue" VerticalOptions="Center" Text="CreatedAt"/>
+                <Label FontSize="Micro" FontAttributes="Bold" TextColor="DarkBlue" VerticalOptions="Center" Text="UpdatedAt"/>
+                <Label FontSize="Micro" FontAttributes="Bold" TextColor="DarkBlue" VerticalOptions="Center" Text="Status"/>
+                <Label FontSize="Micro" FontAttributes="Bold" TextColor="DarkBlue" VerticalOptions="Center" Text="Zone Code"/>
+                <Label FontSize="Micro" FontAttributes="Bold" TextColor="DarkBlue" VerticalOptions="Center" Text="Neighborhood Code"/>
+                <Label FontSize="Micro" FontAttributes="Bold" TextColor="DarkBlue" VerticalOptions="Center" Text="City Code"/>
+                <Label FontSize="Micro" FontAttributes="Bold" TextColor="DarkBlue" VerticalOptions="Center" Text="Section Code"/>
+                <Label FontSize="Micro" FontAttributes="Bold" TextColor="DarkBlue" VerticalOptions="Center" Text="Role Id"/>
+                <Label FontSize="Micro" FontAttributes="Bold" TextColor="DarkBlue" VerticalOptions="Center" Text="Appointable Id"/>
+                <Label FontSize="Micro" FontAttributes="Bold" TextColor="DarkBlue" VerticalOptions="Center" Text="RejectedObservation"/>
+                <Label FontSize="Micro" FontAttributes="Bold" TextColor="DarkBlue" VerticalOptions="Center" Text="Observation"/>
+                <Label FontSize="Micro" FontAttributes="Bold" TextColor="DarkBlue" VerticalOptions="Center" Text="Disable"/>
+                <Label FontSize="Micro" FontAttributes="Bold" TextColor="DarkBlue" VerticalOptions="Center" Text="Visited"/>
+                <Label FontSize="Micro" FontAttributes="Bold" TextColor="DarkBlue" VerticalOptions="Center" Text="Callcenter"/>
+                <Label FontSize="Micro" FontAttributes="Bold" TextColor="DarkBlue" VerticalOptions="Center" Text="AcceptSearch"/>
+                <Label FontSize="Micro" FontAttributes="Bold" TextColor="DarkBlue" VerticalOptions="Center" Text="Campaign Code"/>
+                <Label FontSize="Micro" FontAttributes="Bold" TextColor="DarkBlue" VerticalOptions="Center" Text="User Id"/>
+            </StackLayout>
+            <StackLayout Grid.Column="1">
+                <Entry Text="{Binding ProspectSeleted.Name, Mode=TwoWay}"/>
+                <Entry Text="{Binding ProspectSeleted.Surname, Mode=TwoWay}"/>
+                <Entry Text="{Binding ProspectSeleted.Telephone, Mode=TwoWay}"/>
+                <Entry Text="{Binding ProspectSeleted.SchProspectIdentification, Mode=TwoWay}"/>
+
+            </StackLayout>
+        </Grid>
+    </StackLayout>
+</ContentPage>

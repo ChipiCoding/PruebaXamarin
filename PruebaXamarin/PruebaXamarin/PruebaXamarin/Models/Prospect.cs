@@ -1,5 +1,8 @@
 ﻿using GalaSoft.MvvmLight.Command;
+using PruebaXamarin.Services;
+using PruebaXamarin.ViewModels;
 using System.Windows.Input;
+using Xamarin.Forms;
 
 namespace PruebaXamarin.Models
 {
@@ -70,10 +73,14 @@ namespace PruebaXamarin.Models
             get { return string.Format("Id: {0} - Tel {1}", SchProspectIdentification, Telephone); }
         }
 
-        public ICommand EditCommand { get { return new RelayCommand(EditProspect); } }
+        public ICommand EditCommand  { get { return new RelayCommand(EditProspect); } }
+
         private async void EditProspect()
         {
-
+            MainViewModel mainVM = MainViewModel.GetInstance();
+            mainVM.ProspectSeleted = this;
+            NavigationService navigationService = new NavigationService();
+            await navigationService.Navigate("EditProspectPage");
         }
     }
 }

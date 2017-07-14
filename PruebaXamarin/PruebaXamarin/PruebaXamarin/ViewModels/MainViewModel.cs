@@ -30,6 +30,18 @@
 
         private DialogService DialogService { get => dialogService; set => dialogService = value; }
 
+        #region Singleton
+        private static MainViewModel instance;
+        public static MainViewModel GetInstance()
+        {
+            if (instance == null)
+            {
+                instance = new MainViewModel();
+            }
+
+            return instance;
+        }
+        #endregion
 
         #region Commands
         public ICommand LoginCommand { get { return new RelayCommand(Login); } }        
@@ -88,6 +100,7 @@
         #region Constructor
         public MainViewModel()
         {
+            instance = this;
             login = new Login();
             apiService = new ApiService();
             DialogService = new DialogService();

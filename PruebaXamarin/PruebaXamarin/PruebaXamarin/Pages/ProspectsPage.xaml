@@ -6,17 +6,18 @@
              BindingContext="{Binding Main, Source={StaticResource Locator}}"
              Title="Prospects">
 
-    <StackLayout>
+    <StackLayout Padding="0,20,20,0">
         <ListView
         ItemsSource="{Binding ProspectsCollection}"
         SelectedItem="{Binding ProspectSeleted, Mode=TwoWay}">
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <ViewCell>
-                        <Grid Padding="8">
+                        <Grid>
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="Auto"></ColumnDefinition>
                                 <ColumnDefinition Width="*"></ColumnDefinition>
+                                <ColumnDefinition Width="Auto"></ColumnDefinition>
                             </Grid.ColumnDefinitions>
                             <controls:CircleImage 
                                 Source="{Binding ImageFullPath}" 
@@ -26,32 +27,25 @@
                             </controls:CircleImage>
                             <StackLayout Grid.Column="1">
                                 <Label
-                                    FontSize="Medium"
+                                    FontSize="Micro"
                                     FontAttributes="Bold"
                                     TextColor="DarkBlue"
                                     VerticalOptions="Center"
-                                    Text="{Binding name, StringFormat='Nombre: {0}'}}">
+                                    Text="{Binding FullName, StringFormat='Full Name: {0}'}}">
                                 </Label>
                                 <Label
-                                    FontSize="Medium"
-                                    FontAttributes="Bold"
-                                    VerticalOptions="Center"
-                                    TextColor="DarkBlue"
-                                    Text="{Binding surname, StringFormat='Apellido: {0}'}}">
-                                </Label>
-                                <Label
-                                    FontSize="Small"
+                                    FontSize="Micro"
                                     TextColor="LightBlue"
                                     VerticalOptions="Center"
-                                    Text="{Binding schProspectIdentification, StringFormat='Identificación: {0}'}}">
-                                </Label>
-                                <Label
-                                    FontSize="Small"
-                                    TextColor="LightBlue"
-                                    VerticalOptions="Center"
-                                    Text="{Binding telephone, StringFormat='Teléfono: {0}'}}">
+                                    Text="{Binding PersonalInformation}">
                                 </Label>
                             </StackLayout>
+                            <Button 
+                                Grid.Column="2" 
+                                Text="Edit" 
+                                BackgroundColor="Transparent" 
+                                Command="{Binding EditCommand}">
+                            </Button>
                         </Grid>
                     </ViewCell>
                 </DataTemplate>

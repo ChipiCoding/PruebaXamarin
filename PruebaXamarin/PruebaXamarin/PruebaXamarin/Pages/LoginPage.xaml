@@ -9,17 +9,17 @@
     <ScrollView>
         <StackLayout>
             <Label
+                FontSize="Medium"
                 Text="Correo:">
             </Label>
-            <Entry
-                Placeholder="Ingresar correo"
+            <Entry                
                 Text="{Binding login.email, Mode=TwoWay}">
             </Entry>
             <Label
+                FontSize="Medium"
                 Text="Contraseña:">
             </Label>
-            <Entry
-                Placeholder="Contraseña"
+            <Entry                
                 Text="{Binding login.password, Mode=TwoWay}">
             </Entry>
             <StackLayout>

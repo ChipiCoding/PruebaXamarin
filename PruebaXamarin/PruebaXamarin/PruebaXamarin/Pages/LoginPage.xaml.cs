@@ -12,11 +12,6 @@
         public LoginPage()
         {
             InitializeComponent();
-            //MainViewModel mainViewModel = MainViewModel.GetInstance();
-            //base.Appearing += (object sender, EventArgs e) =>
-            //{
-            //    mainViewModel.LoginCommand.Execute(this);
-            //};
         }
     }
 }

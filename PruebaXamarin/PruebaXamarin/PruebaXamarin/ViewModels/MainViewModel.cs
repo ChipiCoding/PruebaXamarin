@@ -4,14 +4,13 @@
     using PruebaXamarin.Classes;
     using PruebaXamarin.Models;
     using PruebaXamarin.Services;
-    using System.Linq;
     using System.Collections.Generic;
     using System.Collections.ObjectModel;
+    using System.ComponentModel;
     using System.Text.RegularExpressions;
-    using System.Threading.Tasks;
     using System.Windows.Input;
 
-    public class MainViewModel
+    public class MainViewModel : INotifyPropertyChanged
     {
         #region Attributes
         private ApiService apiService;
@@ -19,30 +18,21 @@
         private NavigationService navigationService;
         #endregion
 
+        public event PropertyChangedEventHandler PropertyChanged;
+
+        #region Properties
         private Login login { get; set; }
         private List<Prospect> Prospects { get; set; }
-        private ObservableCollection<Prospect> ProspectsCollection { get; set; }
+        public ObservableCollection<Prospect> ProspectsCollection { get; set; }
 
-        private Prospect ProspectSeleted { get; set; }
-
-        #region Singleton
-        private static MainViewModel instance;
-        internal static MainViewModel GetInstance()
-        {
-            if (instance == null)
-            {
-                instance = new MainViewModel();
-            }
-
-            return instance;
-        }
+        public Prospect ProspectSeleted { get; set; } 
         #endregion
 
         private DialogService DialogService { get => dialogService; set => dialogService = value; }
 
 
         #region Commands
-        private ICommand LoginCommand { get { return new RelayCommand(Login); } }
+        public ICommand LoginCommand { get { return new RelayCommand(Login); } }        
         #endregion
 
         #region Methods Async
@@ -79,9 +69,9 @@
         {
             Response responseAutentication = await apiService.Autenticate<Response>("/application", "/login", login);
             if (responseAutentication.IsSuccess)
-            {
                 GetProspects(responseAutentication.Result as Autorization);
-            }
+            else
+                await dialogService.ShowMessage("Error", "Datos no validos");
         }
 
         private async void GetProspects(Autorization autentication)
@@ -98,11 +88,10 @@
         #region Constructor
         public MainViewModel()
         {
-
+            login = new Login();
             apiService = new ApiService();
             DialogService = new DialogService();
-            navigationService = new NavigationService();            
-            login = new Login();
+            navigationService = new NavigationService();                        
             ProspectsCollection = new ObservableCollection<Prospect>();
         }
         #endregion

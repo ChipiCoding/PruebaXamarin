@@ -9,6 +9,7 @@
     using System.Text.RegularExpressions;
     using System.Windows.Input;
     using System.Linq;
+    using Xamarin.Forms;
 
     public class MainViewModel
     {
@@ -20,7 +21,9 @@
 
         public Login login { get; set; }
         public List<Prospect> Prospects { get; set; }
+
         
+
         public ObservableCollection<Prospect> ProspectsCollection { get; set; }
         
         #region SIngleton
@@ -89,7 +92,6 @@
             Prospects = response.Result as List<Prospect>;            
             foreach (Prospect item in Prospects)            
                 ProspectsCollection.Add(item);
-            
             await navigationService.Navigate("ProspectsPage");
         } 
         #endregion
@@ -97,6 +99,7 @@
         #region Constructor
         public MainViewModel()
         {
+
             apiService = new ApiService();
             DialogService = new DialogService();
             navigationService = new NavigationService();            

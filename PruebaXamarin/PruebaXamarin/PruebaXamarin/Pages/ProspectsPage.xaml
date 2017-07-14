@@ -9,7 +9,7 @@
     <StackLayout>
         <ListView
         ItemsSource="{Binding ProspectsCollection}"
-        HasUnevenRows="True">
+        SelectedItem="{Binding ProspectSeleted, Mode=TwoWay}">
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <ViewCell>
@@ -30,26 +30,26 @@
                                     FontAttributes="Bold"
                                     TextColor="DarkBlue"
                                     VerticalOptions="Center"
-                                    Text="{Binding name}">
+                                    Text="{Binding name, StringFormat='Nombre: {0}'}}">
                                 </Label>
                                 <Label
                                     FontSize="Medium"
                                     FontAttributes="Bold"
                                     VerticalOptions="Center"
                                     TextColor="DarkBlue"
-                                    Text="{Binding surname}">
+                                    Text="{Binding surname, StringFormat='Apellido: {0}'}}">
                                 </Label>
                                 <Label
                                     FontSize="Small"
                                     TextColor="LightBlue"
                                     VerticalOptions="Center"
-                                    Text="{Binding schProspectIdentification}">
+                                    Text="{Binding schProspectIdentification, StringFormat='Identificación: {0}'}}">
                                 </Label>
                                 <Label
                                     FontSize="Small"
                                     TextColor="LightBlue"
                                     VerticalOptions="Center"
-                                    Text="{Binding telephone}">
+                                    Text="{Binding telephone, StringFormat='Teléfono: {0}'}}">
                                 </Label>
                             </StackLayout>
                         </Grid>
@@ -57,6 +57,5 @@
                 </DataTemplate>
             </ListView.ItemTemplate>
         </ListView>
-
     </StackLayout>
 </ContentPage>

@@ -4,12 +4,12 @@
     using PruebaXamarin.Classes;
     using PruebaXamarin.Models;
     using PruebaXamarin.Services;
+    using System.Linq;
     using System.Collections.Generic;
     using System.Collections.ObjectModel;
     using System.Text.RegularExpressions;
+    using System.Threading.Tasks;
     using System.Windows.Input;
-    using System.Linq;
-    using Xamarin.Forms;
 
     public class MainViewModel
     {
@@ -19,14 +19,13 @@
         private NavigationService navigationService;
         #endregion
 
-        public Login login { get; set; }
-        public List<Prospect> Prospects { get; set; }
+        private Login login { get; set; }
+        private List<Prospect> Prospects { get; set; }
+        private ObservableCollection<Prospect> ProspectsCollection { get; set; }
 
-        
+        private Prospect ProspectSeleted { get; set; }
 
-        public ObservableCollection<Prospect> ProspectsCollection { get; set; }
-        
-        #region SIngleton
+        #region Singleton
         private static MainViewModel instance;
         internal static MainViewModel GetInstance()
         {
@@ -39,11 +38,11 @@
         }
         #endregion
 
-        public DialogService DialogService { get => dialogService; set => dialogService = value; }
+        private DialogService DialogService { get => dialogService; set => dialogService = value; }
 
 
         #region Commands
-        public ICommand LoginCommand { get { return new RelayCommand(Login); } }
+        private ICommand LoginCommand { get { return new RelayCommand(Login); } }
         #endregion
 
         #region Methods Async

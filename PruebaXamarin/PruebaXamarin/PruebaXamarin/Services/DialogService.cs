@@ -6,7 +6,7 @@
     {
         public async Task ShowMessage(string title, string message)
         {
-            await Xamarin.Forms.Application.Current.MainPage.DisplayAlert(title, message, "Aceptar");
+            await Xamarin.Forms.Application.Current.MainPage.DisplayAlert(title, message, "Ok");
         }
     }
 }

@@ -10,9 +10,12 @@
     <ScrollView Padding="10">
         <Grid>
             <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="Auto"></ColumnDefinition>
-                <ColumnDefinition Width="*"></ColumnDefinition>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="*"/>
             </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
             <StackLayout>
                 <Label FontSize="Medium" FontAttributes="Bold" TextColor="DarkBlue" VerticalOptions="Center" Text="Name"/>
                 <Label FontSize="Medium" FontAttributes="Bold" TextColor="DarkBlue" VerticalOptions="Center" Text="Surname"/>
@@ -42,8 +45,8 @@
                 <Entry Text="{Binding ProspectSeleted.Telephone, Mode=TwoWay}"/>
                 <Entry Text="{Binding ProspectSeleted.SchProspectIdentification, Mode=TwoWay}"/>
                 <Entry Text="{Binding ProspectSeleted.Address, Mode=TwoWay}"/>
-                <Entry Text="{Binding ProspectSeleted.CreatedAt, Mode=TwoWay}"/>
-                <Entry Text="{Binding ProspectSeleted.UpdatedAt, Mode=TwoWay}"/>
+                <DatePicker VerticalOptions="Center" Date="{Binding ProspectSeleted.CreatedAt}"/>
+                <DatePicker VerticalOptions="Center" Date="{Binding ProspectSeleted.UpdatedAt}"/>
                 <Entry Text="{Binding ProspectSeleted.StatusCd, Mode=TwoWay}"/>
                 <Entry Text="{Binding ProspectSeleted.ZoneCode, Mode=TwoWay}"/>
                 <Entry Text="{Binding ProspectSeleted.NeighborhoodCode, Mode=TwoWay}"/>

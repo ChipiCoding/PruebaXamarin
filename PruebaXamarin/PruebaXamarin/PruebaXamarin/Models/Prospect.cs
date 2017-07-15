@@ -1,11 +1,13 @@
-﻿using GalaSoft.MvvmLight.Command;
-using PruebaXamarin.Services;
-using PruebaXamarin.ViewModels;
-using System.Windows.Input;
-using Xamarin.Forms;
-
+﻿
 namespace PruebaXamarin.Models
 {
+    using GalaSoft.MvvmLight.Command;
+    using PruebaXamarin.Services;
+    using PruebaXamarin.ViewModels;
+    using System.Windows.Input;
+    using System;
+    using Xamarin.Forms;
+
     public class Prospect
     {
         public long Id { get; set; }
@@ -14,8 +16,8 @@ namespace PruebaXamarin.Models
         public string Telephone { get; set; }
         public string SchProspectIdentification { get; set; }
         public string Address { get; set; }
-        public string CreatedAt { get; set; }
-        public string UpdatedAt { get; set; }
+        public DateTime CreatedAt { get; set; }
+        public DateTime UpdatedAt { get; set; }
         public string StatusCd { get; set; }
         public string ZoneCode { get; set; }
         public string NeighborhoodCode { get; set; }

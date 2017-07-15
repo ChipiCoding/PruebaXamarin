@@ -56,12 +56,13 @@
                 <Entry Text="{Binding ProspectSeleted.AppointableId, Mode=TwoWay}"/>
                 <Entry Text="{Binding ProspectSeleted.RejectedObservation, Mode=TwoWay}"/>
                 <Entry Text="{Binding ProspectSeleted.Observation, Mode=TwoWay}"/>
-                <Entry Text="{Binding ProspectSeleted.Disable, Mode=TwoWay}"/>
-                <Entry Text="{Binding ProspectSeleted.Visited, Mode=TwoWay}"/>
-                <Entry Text="{Binding ProspectSeleted.Callcenter, Mode=TwoWay}"/>
-                <Entry Text="{Binding ProspectSeleted.AcceptSearch, Mode=TwoWay}"/>
+                <Switch IsToggled="{Binding ProspectSeleted.Disable}"/>
+                <Switch IsToggled="{Binding ProspectSeleted.Visited}"/>
+                <Switch IsToggled="{Binding ProspectSeleted.Callcenter}"/>
+                <Switch IsToggled="{Binding ProspectSeleted.AcceptSearch}"/>
                 <Entry Text="{Binding ProspectSeleted.CampaignCode, Mode=TwoWay}"/>
                 <Entry Text="{Binding ProspectSeleted.UserId, Mode=TwoWay}"/>
+                
             </StackLayout>
         </Grid>   
     </ScrollView>

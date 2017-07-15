@@ -27,10 +27,10 @@ namespace PruebaXamarin.Models
         public string AppointableId { get; set; }
         public string RejectedObservation { get; set; }
         public string Observation { get; set; }
-        public string Disable { get; set; }
-        public string Visited { get; set; }
-        public string Callcenter { get; set; }
-        public string AcceptSearch { get; set; }
+        public bool Disable { get; set; }
+        public bool Visited { get; set; }
+        public bool Callcenter { get; set; }
+        public bool AcceptSearch { get; set; }
         public string CampaignCode { get; set; }
         public string UserId { get; set; }
         public string ImageFullPath

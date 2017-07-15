@@ -10,14 +10,14 @@
         <StackLayout>
             <Label
                 FontSize="Medium"
-                Text="Correo:">
+                Text="Email:">
             </Label>
             <Entry                
                 Text="{Binding Login.email, Mode=TwoWay}">
             </Entry>
             <Label
-                FontSize="Medium"
-                Text="Contraseña:">
+                FontSize="Medium"                
+                Text="Password:">
             </Label>
             <Entry     
                 IsPassword="True" 

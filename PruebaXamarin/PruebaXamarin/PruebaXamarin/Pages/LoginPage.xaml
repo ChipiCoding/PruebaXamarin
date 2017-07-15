@@ -24,7 +24,7 @@
                 Text="{Binding Login.password, Mode=TwoWay}">
             </Entry>
             <StackLayout>
-                <Button HorizontalOptions="Center" VerticalOptions="Center" Command="{Binding LoginCommand}" Text="iniciar">
+                <Button HorizontalOptions="Center" VerticalOptions="Center" Command="{Binding LoginCommand}" Text="Login">
                 </Button>
             </StackLayout>
         </StackLayout>

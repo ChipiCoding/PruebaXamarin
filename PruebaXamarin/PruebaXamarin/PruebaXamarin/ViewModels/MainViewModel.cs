@@ -106,7 +106,8 @@
             if (responseAutentication.IsSuccess)
             {
                 GetProspects(responseAutentication.Result as Autorization);
-                login.SaveCredentials(login);
+                if (login.SaveData)
+                    login.SaveCredentials(login);
             }
             else
                 await dialogService.ShowMessage("Error", "Invalid data.");

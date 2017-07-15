@@ -25,11 +25,19 @@
                 FontSize="Small"
                 Text="{Binding Login.password, Mode=TwoWay}">
             </Entry>
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto"></ColumnDefinition>
+                    <ColumnDefinition Width="*"></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+                <Label HorizontalOptions="Start" Text="Save credentials:"/>
+                <Switch Grid.Column="1" HorizontalOptions="Start" IsToggled="{Binding Login.SaveData, Mode=TwoWay}"/>
+            </Grid>
             <ActivityIndicator
                 IsRunning="{Binding IsLogging}">
             </ActivityIndicator>
             <StackLayout>
-                <Button HorizontalOptions="Center" VerticalOptions="Center" Command="{Binding LoginCommand}" Text="Login">
+                <Button HorizontalOptions="Center" BackgroundColor="Gold"  BorderColor="Black" VerticalOptions="Center" Command="{Binding LoginCommand}" Text="Login">
                 </Button>
             </StackLayout>
         </StackLayout>

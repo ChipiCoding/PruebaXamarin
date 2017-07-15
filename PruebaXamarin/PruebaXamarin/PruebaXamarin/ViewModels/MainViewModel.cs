@@ -8,6 +8,7 @@
     using System.Collections.ObjectModel;
     using System.Text.RegularExpressions;
     using System.Windows.Input;
+    using Xamarin.Auth;
 
     public class MainViewModel : BaseViewModel
     {
@@ -70,7 +71,7 @@
 
         #region Methods Async
         private async void LoginAutorization()
-        {            
+        {
             if (string.IsNullOrEmpty(login.email))
             {
                 await dialogService.ShowMessage("Error", "Email is required.");
@@ -94,23 +95,26 @@
                         IsLogging = true;
                         ValidateLogin();
                         IsLogging = false;
-                    }                        
+                    }
                 }
-            }            
+            }
         }
 
         private async void ValidateLogin()
         {
-            Response responseAutentication = await apiService.Autenticate<Response>("/application", "/login", login);
+            Classes.Response responseAutentication = await apiService.Autenticate<Classes.Response>("/application", "/login", login);
             if (responseAutentication.IsSuccess)
+            {
                 GetProspects(responseAutentication.Result as Autorization);
+                login.SaveCredentials(login);
+            }
             else
                 await dialogService.ShowMessage("Error", "Invalid data.");
         }
 
         private async void GetProspects(Autorization autorization)
         {
-            Response response = await apiService.GetProspects("/sch", "/prospects.json", autorization);
+            Classes.Response response = await apiService.GetProspects("/sch", "/prospects.json", autorization);
             Prospects = new List<Prospect>();
             Prospects = response.Result as List<Prospect>;
             foreach (Prospect item in Prospects)
@@ -124,9 +128,11 @@
         {
             instance = this;
             Login = new Login();
-#if DEBUG
-            Login = new Login { email = "directo@directo.com", password = "directo123" };
-#endif
+            if (!string.IsNullOrEmpty(Login.UserEmail) && !string.IsNullOrEmpty(Login.UserPassword))
+            {
+                Login.email = Login.UserEmail;
+                Login.password = Login.UserPassword;
+            }
             IsLogging = false;
             apiService = new ApiService();
             DialogService = new DialogService();

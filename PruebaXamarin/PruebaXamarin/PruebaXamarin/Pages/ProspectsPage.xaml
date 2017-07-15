@@ -44,8 +44,7 @@
                                 Grid.Column="2" 
                                 Text="Edit" 
                                 BackgroundColor="Transparent" 
-                                Command="{Binding EditCommand}"
-                                >
+                                Command="{Binding EditCommand}">
                             </Button>
                         </Grid>
                     </ViewCell>

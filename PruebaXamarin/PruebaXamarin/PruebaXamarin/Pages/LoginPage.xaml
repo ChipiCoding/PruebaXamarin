@@ -28,7 +28,6 @@
             <ActivityIndicator
                 IsRunning="{Binding IsLogging}">
             </ActivityIndicator>
-
             <StackLayout>
                 <Button HorizontalOptions="Center" VerticalOptions="Center" Command="{Binding LoginCommand}" Text="Login">
                 </Button>

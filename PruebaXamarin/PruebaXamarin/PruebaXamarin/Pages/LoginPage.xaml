@@ -9,18 +9,20 @@
     <ScrollView Padding="10">
         <StackLayout>
             <Label
-                FontSize="Medium"
+                FontSize="Small"
                 Text="Email:">
             </Label>
             <Entry                
-                Text="{Binding Login.email, Mode=TwoWay}">
+                Text="{Binding Login.email, Mode=TwoWay}"
+                FontSize="Small">
             </Entry>
             <Label
-                FontSize="Medium"                
+                FontSize="Small"                
                 Text="Password:">
             </Label>
             <Entry     
                 IsPassword="True" 
+                FontSize="Small"
                 Text="{Binding Login.password, Mode=TwoWay}">
             </Entry>
             <ActivityIndicator

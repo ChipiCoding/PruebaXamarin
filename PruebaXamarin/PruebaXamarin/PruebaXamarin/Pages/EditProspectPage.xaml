@@ -7,42 +7,60 @@
 
 
 
-    <StackLayout Padding="0,20,20,0">
+    <ScrollView Padding="10">
         <Grid>
             <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="Auto*"></ColumnDefinition>
+                <ColumnDefinition Width="Auto"></ColumnDefinition>
                 <ColumnDefinition Width="*"></ColumnDefinition>
             </Grid.ColumnDefinitions>
             <StackLayout>
-                <Label FontSize="Micro" FontAttributes="Bold" TextColor="DarkBlue" VerticalOptions="Center" Text="Name"/>
-                <Label FontSize="Micro" FontAttributes="Bold" TextColor="DarkBlue" VerticalOptions="Center" Text="Surname"/>
-                <Label FontSize="Micro" FontAttributes="Bold" TextColor="DarkBlue" VerticalOptions="Center" Text="Telephone"/>
-                <Label FontSize="Micro" FontAttributes="Bold" TextColor="DarkBlue" VerticalOptions="Center" Text="Prospect Identification"/>
-                <Label FontSize="Micro" FontAttributes="Bold" TextColor="DarkBlue" VerticalOptions="Center" Text="CreatedAt"/>
-                <Label FontSize="Micro" FontAttributes="Bold" TextColor="DarkBlue" VerticalOptions="Center" Text="UpdatedAt"/>
-                <Label FontSize="Micro" FontAttributes="Bold" TextColor="DarkBlue" VerticalOptions="Center" Text="Status"/>
-                <Label FontSize="Micro" FontAttributes="Bold" TextColor="DarkBlue" VerticalOptions="Center" Text="Zone Code"/>
-                <Label FontSize="Micro" FontAttributes="Bold" TextColor="DarkBlue" VerticalOptions="Center" Text="Neighborhood Code"/>
-                <Label FontSize="Micro" FontAttributes="Bold" TextColor="DarkBlue" VerticalOptions="Center" Text="City Code"/>
-                <Label FontSize="Micro" FontAttributes="Bold" TextColor="DarkBlue" VerticalOptions="Center" Text="Section Code"/>
-                <Label FontSize="Micro" FontAttributes="Bold" TextColor="DarkBlue" VerticalOptions="Center" Text="Role Id"/>
-                <Label FontSize="Micro" FontAttributes="Bold" TextColor="DarkBlue" VerticalOptions="Center" Text="Appointable Id"/>
-                <Label FontSize="Micro" FontAttributes="Bold" TextColor="DarkBlue" VerticalOptions="Center" Text="RejectedObservation"/>
-                <Label FontSize="Micro" FontAttributes="Bold" TextColor="DarkBlue" VerticalOptions="Center" Text="Observation"/>
-                <Label FontSize="Micro" FontAttributes="Bold" TextColor="DarkBlue" VerticalOptions="Center" Text="Disable"/>
-                <Label FontSize="Micro" FontAttributes="Bold" TextColor="DarkBlue" VerticalOptions="Center" Text="Visited"/>
-                <Label FontSize="Micro" FontAttributes="Bold" TextColor="DarkBlue" VerticalOptions="Center" Text="Callcenter"/>
-                <Label FontSize="Micro" FontAttributes="Bold" TextColor="DarkBlue" VerticalOptions="Center" Text="AcceptSearch"/>
-                <Label FontSize="Micro" FontAttributes="Bold" TextColor="DarkBlue" VerticalOptions="Center" Text="Campaign Code"/>
-                <Label FontSize="Micro" FontAttributes="Bold" TextColor="DarkBlue" VerticalOptions="Center" Text="User Id"/>
+                <Label FontSize="Medium" FontAttributes="Bold" TextColor="DarkBlue" VerticalOptions="Center" Text="Name"/>
+                <Label FontSize="Medium" FontAttributes="Bold" TextColor="DarkBlue" VerticalOptions="Center" Text="Surname"/>
+                <Label FontSize="Medium" FontAttributes="Bold" TextColor="DarkBlue" VerticalOptions="Center" Text="Telephone"/>
+                <Label FontSize="Medium" FontAttributes="Bold" TextColor="DarkBlue" VerticalOptions="Center" Text="Prospect Identification"/>
+                <Label FontSize="Medium" FontAttributes="Bold" TextColor="DarkBlue" VerticalOptions="Center" Text="CreatedAt"/>
+                <Label FontSize="Medium" FontAttributes="Bold" TextColor="DarkBlue" VerticalOptions="Center" Text="UpdatedAt"/>
+                <Label FontSize="Medium" FontAttributes="Bold" TextColor="DarkBlue" VerticalOptions="Center" Text="Status"/>
+                <Label FontSize="Medium" FontAttributes="Bold" TextColor="DarkBlue" VerticalOptions="Center" Text="Zone Code"/>
+                <Label FontSize="Medium" FontAttributes="Bold" TextColor="DarkBlue" VerticalOptions="Center" Text="Neighborhood Code"/>
+                <Label FontSize="Medium" FontAttributes="Bold" TextColor="DarkBlue" VerticalOptions="Center" Text="City Code"/>
+                <Label FontSize="Medium" FontAttributes="Bold" TextColor="DarkBlue" VerticalOptions="Center" Text="Section Code"/>
+                <Label FontSize="Medium" FontAttributes="Bold" TextColor="DarkBlue" VerticalOptions="Center" Text="Role Id"/>
+                <Label FontSize="Medium" FontAttributes="Bold" TextColor="DarkBlue" VerticalOptions="Center" Text="Appointable Id"/>
+                <Label FontSize="Medium" FontAttributes="Bold" TextColor="DarkBlue" VerticalOptions="Center" Text="RejectedObservation"/>
+                <Label FontSize="Medium" FontAttributes="Bold" TextColor="DarkBlue" VerticalOptions="Center" Text="Observation"/>
+                <Label FontSize="Medium" FontAttributes="Bold" TextColor="DarkBlue" VerticalOptions="Center" Text="Disable"/>
+                <Label FontSize="Medium" FontAttributes="Bold" TextColor="DarkBlue" VerticalOptions="Center" Text="Visited"/>
+                <Label FontSize="Medium" FontAttributes="Bold" TextColor="DarkBlue" VerticalOptions="Center" Text="Callcenter"/>
+                <Label FontSize="Medium" FontAttributes="Bold" TextColor="DarkBlue" VerticalOptions="Center" Text="AcceptSearch"/>
+                <Label FontSize="Medium" FontAttributes="Bold" TextColor="DarkBlue" VerticalOptions="Center" Text="Campaign Code"/>
+                <Label FontSize="Medium" FontAttributes="Bold" TextColor="DarkBlue" VerticalOptions="Center" Text="User Id"/>
             </StackLayout>
             <StackLayout Grid.Column="1">
                 <Entry Text="{Binding ProspectSeleted.Name, Mode=TwoWay}"/>
                 <Entry Text="{Binding ProspectSeleted.Surname, Mode=TwoWay}"/>
                 <Entry Text="{Binding ProspectSeleted.Telephone, Mode=TwoWay}"/>
                 <Entry Text="{Binding ProspectSeleted.SchProspectIdentification, Mode=TwoWay}"/>
-
+                <Entry Text="{Binding ProspectSeleted.Address, Mode=TwoWay}"/>
+                <Entry Text="{Binding ProspectSeleted.CreatedAt, Mode=TwoWay}"/>
+                <Entry Text="{Binding ProspectSeleted.UpdatedAt, Mode=TwoWay}"/>
+                <Entry Text="{Binding ProspectSeleted.StatusCd, Mode=TwoWay}"/>
+                <Entry Text="{Binding ProspectSeleted.ZoneCode, Mode=TwoWay}"/>
+                <Entry Text="{Binding ProspectSeleted.NeighborhoodCode, Mode=TwoWay}"/>
+                <Entry Text="{Binding ProspectSeleted.CityCode, Mode=TwoWay}"/>
+                <Entry Text="{Binding ProspectSeleted.SectionCode, Mode=TwoWay}"/>
+                <Entry Text="{Binding ProspectSeleted.RoleId, Mode=TwoWay}"/>
+                <Entry Text="{Binding ProspectSeleted.AppointableId, Mode=TwoWay}"/>
+                <Entry Text="{Binding ProspectSeleted.RejectedObservation, Mode=TwoWay}"/>
+                <Entry Text="{Binding ProspectSeleted.Observation, Mode=TwoWay}"/>
+                <Entry Text="{Binding ProspectSeleted.Disable, Mode=TwoWay}"/>
+                <Entry Text="{Binding ProspectSeleted.Visited, Mode=TwoWay}"/>
+                <Entry Text="{Binding ProspectSeleted.Callcenter, Mode=TwoWay}"/>
+                <Entry Text="{Binding ProspectSeleted.AcceptSearch, Mode=TwoWay}"/>
+                <Entry Text="{Binding ProspectSeleted.CampaignCode, Mode=TwoWay}"/>
+                <Entry Text="{Binding ProspectSeleted.UserId, Mode=TwoWay}"/>
             </StackLayout>
-        </Grid>
-    </StackLayout>
+        </Grid>   
+    </ScrollView>
+    
 </ContentPage>

@@ -18,14 +18,36 @@
         private NavigationService navigationService;
         #endregion
 
+        #region PropertyChanged
         public event PropertyChangedEventHandler PropertyChanged;
+        private void PropertyChangedEvent(string nameProperty)
+        {
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("Login"));
+        }
+        #endregion
 
         #region Properties
-        private Login login { get; set; }
+        private Login login;
+        public Login Login
+        {
+            set
+            {
+                if (login != value)
+                {
+                    login = value;                    
+                    PropertyChangedEvent("Login");
+                }
+            }
+            get
+            {
+                return login;
+            }
+        }
+
         private List<Prospect> Prospects { get; set; }
         public ObservableCollection<Prospect> ProspectsCollection { get; set; }
 
-        public Prospect ProspectSeleted { get; set; } 
+        public Prospect ProspectSeleted { get; set; }
         #endregion
 
         private DialogService DialogService { get => dialogService; set => dialogService = value; }
@@ -44,15 +66,12 @@
         #endregion
 
         #region Commands
-        public ICommand LoginCommand { get { return new RelayCommand(Login); } }        
+        public ICommand LoginCommand { get { return new RelayCommand(LoginAutorization); } }
         #endregion
 
         #region Methods Async
-        private async void Login()
+        private async void LoginAutorization()
         {
-#if DEBUG
-            login = new Login { email = "directo@directo.com", password = "directo123" };
-#endif
             if (string.IsNullOrEmpty(login.email))
             {
                 await dialogService.ShowMessage("Error", "El correo es obligatorio.");
@@ -90,23 +109,29 @@
         {
             Response response = await apiService.GetProspects("/sch", "/prospects.json", autentication);
             Prospects = new List<Prospect>();
-            Prospects = response.Result as List<Prospect>;            
-            foreach (Prospect item in Prospects)            
+            Prospects = response.Result as List<Prospect>;
+            foreach (Prospect item in Prospects)
                 ProspectsCollection.Add(item);
             await navigationService.Navigate("ProspectsPage");
-        } 
+        }
         #endregion
 
         #region Constructor
         public MainViewModel()
         {
             instance = this;
-            login = new Login();
+            Login = new Login();
+#if DEBUG
+            Login = new Login { email = "directo@directo.com", password = "directo123" };
+#endif
             apiService = new ApiService();
             DialogService = new DialogService();
-            navigationService = new NavigationService();                        
+            navigationService = new NavigationService();
             ProspectsCollection = new ObservableCollection<Prospect>();
         }
         #endregion
+
+
+
     }
 }

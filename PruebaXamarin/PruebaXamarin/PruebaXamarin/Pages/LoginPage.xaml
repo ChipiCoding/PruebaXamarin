@@ -13,14 +13,15 @@
                 Text="Correo:">
             </Label>
             <Entry                
-                Text="{Binding login.email, Mode=TwoWay}">
+                Text="{Binding Login.email, Mode=TwoWay}">
             </Entry>
             <Label
                 FontSize="Medium"
                 Text="Contraseña:">
             </Label>
-            <Entry                
-                Text="{Binding login.password, Mode=TwoWay}">
+            <Entry     
+                IsPassword="True" 
+                Text="{Binding Login.password, Mode=TwoWay}">
             </Entry>
             <StackLayout>
                 <Button HorizontalOptions="Center" VerticalOptions="Center" Command="{Binding LoginCommand}" Text="iniciar">

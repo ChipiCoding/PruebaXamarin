@@ -13,7 +13,7 @@
                 Text="Email:">
             </Label>
             <Entry                
-                Text="{Binding Login.email, Mode=TwoWay}"
+                Text="{Binding LoginVM.Login.email, Mode=TwoWay}"
                 FontSize="Small">
             </Entry>
             <Label
@@ -23,7 +23,7 @@
             <Entry     
                 IsPassword="True" 
                 FontSize="Small"
-                Text="{Binding Login.password, Mode=TwoWay}">
+                Text="{Binding LoginVM.Login.password, Mode=TwoWay}">
             </Entry>
             <Grid>
                 <Grid.ColumnDefinitions>
@@ -31,13 +31,13 @@
                     <ColumnDefinition Width="*"></ColumnDefinition>
                 </Grid.ColumnDefinitions>
                 <Label HorizontalOptions="Start" Text="Save credentials:"/>
-                <Switch Grid.Column="1" HorizontalOptions="Start" IsToggled="{Binding Login.SaveData, Mode=TwoWay}"/>
+                <Switch Grid.Column="1" HorizontalOptions="Start" IsToggled="{Binding LoginVM.SaveData, Mode=TwoWay}"/>
             </Grid>
             <ActivityIndicator
                 IsRunning="{Binding IsLogging}">
             </ActivityIndicator>
             <StackLayout>
-                <Button HorizontalOptions="Center" BackgroundColor="Gold"  BorderColor="Black" VerticalOptions="Center" Command="{Binding LoginCommand}" Text="Login">
+                <Button HorizontalOptions="Center" BackgroundColor="Gold"  BorderColor="Black" VerticalOptions="Center" Command="{Binding LoginVM.LoginCommand}" Text="Login">
                 </Button>
             </StackLayout>
         </StackLayout>

@@ -20,7 +20,7 @@
         public event PropertyChangedEventHandler PropertyChanged;
         public void PropertyChangedEvent(string nameProperty)
         {
-            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("Login"));
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameProperty));
         }
         #endregion
     }

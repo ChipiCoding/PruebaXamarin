@@ -21,22 +21,6 @@
             }
         }
 
-        private bool isLogging;
-
-        public bool IsLogging
-        {
-            get { return isLogging; }
-            set
-            {
-                if (isLogging != value)
-                {
-                    isLogging = value;
-                    PropertyChangedEvent("IsLogging");
-                };
-            }
-        }
-
-
         public ProspectViewModel ProspectVM { get; set; }
 
         #region Properties
@@ -68,8 +52,7 @@
             {
                 LoginVM.Login.email = LoginVM.UserEmail;
                 LoginVM.Login.password = LoginVM.UserPassword;
-            }
-            IsLogging = false;
+            }            
             apiService = new ApiService();
             DialogService = new DialogService();
             navigationService = new NavigationService();            

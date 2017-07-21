@@ -18,8 +18,6 @@
         private List<Prospect> Prospects { get; set; }
         public ObservableCollection<Prospect> ProspectsCollection { get; set; }
 
-        //public ProspectViewModel ProspectSeleted { get; set; }
-
         private Prospect prospectSeleted;
 
         public Prospect ProspectSeleted
@@ -30,7 +28,7 @@
                 if (prospectSeleted != value)
                 {
                     prospectSeleted = value;
-                    PropertyChangedEvent("ProspectSeleted");
+                    PropertyChangedEvent("ProspectSeleted");                    
                 }
             }
         }
@@ -38,9 +36,11 @@
 
         private async void EditProspect()
         {
-            //mainVM = MainViewModel.GetInstance();            
             NavigationService navigationService = new NavigationService();
-            await navigationService.Navigate("EditProspectPage");
+            if (ProspectSeleted != null)
+                await navigationService.Navigate("EditProspectPage");
+            else
+                await dialogService.ShowMessage(string.Empty, "Please selected item");
         }
 
         public async void GetProspects(Autorization autorization)
@@ -50,7 +50,7 @@
             Prospects = response.Result as List<Prospect>;
             foreach (Prospect item in Prospects)
                 ProspectsCollection.Add(item);
-            
+
             main.ProspectVM.ProspectsCollection = ProspectsCollection;
             await navigationService.Navigate("ProspectsPage");
         }
@@ -61,7 +61,6 @@
             apiService = new ApiService();
             DialogService = new DialogService();
             navigationService = new NavigationService();
-            prospectSeleted = new Prospect();
             ProspectsCollection = new ObservableCollection<Prospect>();
         }
     }

@@ -1,8 +1,5 @@
-﻿namespace PruebaXamarin.Classes
+﻿namespace PruebaXamarin.Models
 {
-    using System.Linq;
-    using Xamarin.Auth;
-
     public class Login
     {
         public string email { get; set; }

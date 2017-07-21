@@ -39,7 +39,7 @@
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
     <Compile Include="Classes\Autorization.cs" />
-    <Compile Include="Classes\Login.cs" />
+    <Compile Include="Models\Login.cs" />
     <Compile Include="Classes\Response.cs" />
     <Compile Include="Infrastructure\InstanceLocator.cs" />
     <Compile Include="Models\Prospect.cs" />

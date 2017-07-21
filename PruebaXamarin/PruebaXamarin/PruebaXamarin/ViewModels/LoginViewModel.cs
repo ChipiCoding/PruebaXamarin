@@ -2,6 +2,7 @@
 {
     using GalaSoft.MvvmLight.Command;
     using PruebaXamarin.Classes;
+    using PruebaXamarin.Models;
     using PruebaXamarin.Services;
     using System.Linq;
     using System.Text.RegularExpressions;
@@ -37,12 +38,8 @@
                         await dialogService.ShowMessage("Error", "The password is required.");
                         return;
                     }
-                    else
-                    {
-                        //IsLogging = true;
-                        ValidateLogin();
-                        //IsLogging = false;
-                    }
+                    else                                            
+                        ValidateLogin();                                            
                 }
             }
         }

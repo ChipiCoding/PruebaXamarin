@@ -20,6 +20,22 @@
 
         //public ProspectViewModel ProspectSeleted { get; set; }
 
+        private Prospect prospectSeleted;
+
+        public Prospect ProspectSeleted
+        {
+            get { return prospectSeleted; }
+            set
+            {
+                if (prospectSeleted != value)
+                {
+                    prospectSeleted = value;
+                    PropertyChangedEvent("ProspectSeleted");
+                }
+            }
+        }
+
+
         private async void EditProspect()
         {
             //mainVM = MainViewModel.GetInstance();            
@@ -45,6 +61,7 @@
             apiService = new ApiService();
             DialogService = new DialogService();
             navigationService = new NavigationService();
+            prospectSeleted = new Prospect();
             ProspectsCollection = new ObservableCollection<Prospect>();
         }
     }

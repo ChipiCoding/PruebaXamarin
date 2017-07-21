@@ -7,6 +7,13 @@
              Title="Prospects">
 
     <StackLayout Padding="0,20,20,0">
+        <Button 
+                                Grid.Column="2" 
+                                Text="Edit" 
+                                BackgroundColor="Transparent" 
+                                BorderColor="Transparent"
+                                Command="{Binding ProspectVM.EditCommand}">
+        </Button>
         <ListView
         ItemsSource="{Binding ProspectVM.ProspectsCollection}"
         SelectedItem="{Binding ProspectVM.ProspectSeleted, Mode=TwoWay}">

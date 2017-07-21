@@ -41,7 +41,7 @@
 
         #region Properties
 
-        public ProspectViewModel ProspectSeleted { get; set; }
+        //public ProspectViewModel ProspectSeleted { get; set; }
         #endregion
 
         #region Singleton

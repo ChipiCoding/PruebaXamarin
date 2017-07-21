@@ -8,52 +8,52 @@
     <ScrollView Padding="10">
         <StackLayout>
             <Label FontSize="Small" FontAttributes="Bold" TextColor="DarkBlue" Text="Name"/>
-            <Entry FontSize="Small" Text="{Binding ProspectSeleted.Name, Mode=TwoWay}"/>
+            <Entry FontSize="Small" Text="{Binding ProspectVM.ProspectSeleted.Name, Mode=TwoWay}"/>
 
             <Label FontSize="Small" FontAttributes="Bold" TextColor="DarkBlue" VerticalOptions="Center" Text="Surname"/>
-            <Entry FontSize="Small" Text="{Binding ProspectSeleted.Surname, Mode=TwoWay}"/>
+            <Entry FontSize="Small" Text="{Binding ProspectVM.ProspectSeleted.Surname, Mode=TwoWay}"/>
 
             <Label FontSize="Small" FontAttributes="Bold" TextColor="DarkBlue" Text="Telephone"/>
-            <Entry FontSize="Small" Text="{Binding ProspectSeleted.Telephone, Mode=TwoWay}"/>
+            <Entry FontSize="Small" Text="{Binding ProspectVM.ProspectSeleted.Telephone, Mode=TwoWay}"/>
 
             <Label FontSize="Small" FontAttributes="Bold" TextColor="DarkBlue" Text="Prospect Identification"/>
-            <Entry FontSize="Small" Text="{Binding ProspectSeleted.SchProspectIdentification, Mode=TwoWay}"/>
+            <Entry FontSize="Small" Text="{Binding ProspectVM.ProspectSeleted.SchProspectIdentification, Mode=TwoWay}"/>
 
             <Label FontSize="Small" FontAttributes="Bold" TextColor="DarkBlue" Text="Address"/>
-            <Entry FontSize="Small" Text="{Binding ProspectSeleted.Address, Mode=TwoWay}"/>
+            <Entry FontSize="Small" Text="{Binding ProspectVM.ProspectSeleted.Address, Mode=TwoWay}"/>
 
             <Label FontSize="Small" FontAttributes="Bold" TextColor="DarkBlue" Text="CreatedAt"/>
-            <DatePicker VerticalOptions="Center" Date="{Binding ProspectSeleted.CreatedAt}"/>
+            <DatePicker VerticalOptions="Center" Date="{Binding ProspectVM.ProspectSeleted.CreatedAt}"/>
 
             <Label FontSize="Small" FontAttributes="Bold" TextColor="DarkBlue" Text="UpdatedAt"/>
-            <DatePicker VerticalOptions="Center" Date="{Binding ProspectSeleted.UpdatedAt}"/>
+            <DatePicker VerticalOptions="Center" Date="{Binding ProspectVM.ProspectSeleted.UpdatedAt}"/>
 
             <Label FontSize="Small" FontAttributes="Bold" TextColor="DarkBlue" Text="Status"/>
-            <Entry FontSize="Small" Text="{Binding ProspectSeleted.StatusCd, Mode=TwoWay}"/>
+            <Entry FontSize="Small" Text="{Binding ProspectVM.ProspectSeleted.StatusCd, Mode=TwoWay}"/>
 
             <Label FontSize="Small" FontAttributes="Bold" TextColor="DarkBlue" Text="Zone Code"/>
-            <Entry FontSize="Small" Text="{Binding ProspectSeleted.ZoneCode, Mode=TwoWay}"/>
+            <Entry FontSize="Small" Text="{Binding ProspectVM.ProspectSeleted.ZoneCode, Mode=TwoWay}"/>
 
             <Label FontSize="Small" FontAttributes="Bold" TextColor="DarkBlue" Text="Neighborhood Code"/>
-            <Entry FontSize="Small" Text="{Binding ProspectSeleted.NeighborhoodCode, Mode=TwoWay}"/>
+            <Entry FontSize="Small" Text="{Binding ProspectVM.ProspectSeleted.NeighborhoodCode, Mode=TwoWay}"/>
 
             <Label FontSize="Small" FontAttributes="Bold" TextColor="DarkBlue" Text="City Code"/>
-            <Entry FontSize="Small" Text="{Binding ProspectSeleted.CityCode, Mode=TwoWay}"/>
+            <Entry FontSize="Small" Text="{Binding ProspectVM.ProspectSeleted.CityCode, Mode=TwoWay}"/>
 
             <Label FontSize="Small" FontAttributes="Bold" TextColor="DarkBlue" Text="Section Code"/>
-            <Entry FontSize="Small" Text="{Binding ProspectSeleted.SectionCode, Mode=TwoWay}"/>
+            <Entry FontSize="Small" Text="{Binding ProspectVM.ProspectSeleted.SectionCode, Mode=TwoWay}"/>
 
             <Label FontSize="Small" FontAttributes="Bold" TextColor="DarkBlue" Text="Role Id"/>
-            <Entry FontSize="Small" Text="{Binding ProspectSeleted.RoleId, Mode=TwoWay}"/>
+            <Entry FontSize="Small" Text="{Binding ProspectVM.ProspectSeleted.RoleId, Mode=TwoWay}"/>
 
             <Label FontSize="Small" FontAttributes="Bold" TextColor="DarkBlue" Text="Appointable Id"/>
-            <Entry FontSize="Small" Text="{Binding ProspectSeleted.AppointableId, Mode=TwoWay}"/>
+            <Entry FontSize="Small" Text="{Binding ProspectVM.ProspectSeleted.AppointableId, Mode=TwoWay}"/>
 
             <Label FontSize="Small" FontAttributes="Bold" TextColor="DarkBlue" Text="RejectedObservation"/>
-            <Entry FontSize="Small" Text="{Binding ProspectSeleted.RejectedObservation, Mode=TwoWay}"/>
+            <Entry FontSize="Small" Text="{Binding ProspectVM.ProspectSeleted.RejectedObservation, Mode=TwoWay}"/>
 
             <Label FontSize="Small" FontAttributes="Bold" TextColor="DarkBlue" Text="Observation"/>
-            <Entry FontSize="Small" Text="{Binding ProspectSeleted.Observation, Mode=TwoWay}"/>
+            <Entry FontSize="Small" Text="{Binding ProspectVM.ProspectSeleted.Observation, Mode=TwoWay}"/>
 
             <Grid>
                 <Grid.ColumnDefinitions>
@@ -61,7 +61,7 @@
                     <ColumnDefinition Width="*"></ColumnDefinition>
                 </Grid.ColumnDefinitions>
                 <Label  HorizontalOptions="Start" FontSize="Small" FontAttributes="Bold" TextColor="DarkBlue" Text="Disable"/>
-                <Switch Grid.Column="1" HorizontalOptions="End" IsToggled="{Binding ProspectSeleted.Disable}"/>
+                <Switch Grid.Column="1" HorizontalOptions="End" IsToggled="{Binding ProspectVM.ProspectSeleted.Disable}"/>
             </Grid>
 
             <Grid>
@@ -70,7 +70,7 @@
                     <ColumnDefinition Width="*"></ColumnDefinition>
                 </Grid.ColumnDefinitions>
                 <Label HorizontalOptions="Start" FontSize="Small" FontAttributes="Bold" TextColor="DarkBlue" Text="Visited"/>
-                <Switch Grid.Column="1" HorizontalOptions="End" IsToggled="{Binding ProspectSeleted.Visited}"/>
+                <Switch Grid.Column="1" HorizontalOptions="End" IsToggled="{Binding ProspectVM.ProspectSeleted.Visited}"/>
             </Grid>
 
             <Grid>
@@ -79,7 +79,7 @@
                     <ColumnDefinition Width="*"></ColumnDefinition>
                 </Grid.ColumnDefinitions>
                 <Label  HorizontalOptions="Start" FontSize="Small" FontAttributes="Bold" TextColor="DarkBlue" Text="Callcenter"/>
-                <Switch Grid.Column="1" HorizontalOptions="End" IsToggled="{Binding ProspectSeleted.Callcenter}"/>
+                <Switch Grid.Column="1" HorizontalOptions="End" IsToggled="{Binding ProspectVM.ProspectSeleted.Callcenter}"/>
             </Grid>
             
             <Grid>
@@ -88,14 +88,14 @@
                     <ColumnDefinition Width="*"></ColumnDefinition>
                 </Grid.ColumnDefinitions>
                 <Label  HorizontalOptions="Start" FontSize="Small" FontAttributes="Bold" TextColor="DarkBlue" Text="AcceptSearch"/>
-                <Switch Grid.Column="1" HorizontalOptions="End" IsToggled="{Binding ProspectSeleted.AcceptSearch}"/>
+                <Switch Grid.Column="1" HorizontalOptions="End" IsToggled="{Binding ProspectVM.ProspectSeleted.AcceptSearch}"/>
             </Grid>
             
             <Label FontSize="Small" FontAttributes="Bold" TextColor="DarkBlue" Text="Campaign Code"/>
-            <Entry Text="{Binding ProspectSeleted.CampaignCode, Mode=TwoWay}"/>
+            <Entry Text="{Binding ProspectVM.ProspectSeleted.CampaignCode, Mode=TwoWay}"/>
 
             <Label FontSize="Small" FontAttributes="Bold" TextColor="DarkBlue" Text="User Id"/>
-            <Entry Text="{Binding ProspectSeleted.UserId, Mode=TwoWay}"/>
+            <Entry Text="{Binding ProspectVM.ProspectSeleted.UserId, Mode=TwoWay}"/>
         </StackLayout>
     </ScrollView>
 </ContentPage>

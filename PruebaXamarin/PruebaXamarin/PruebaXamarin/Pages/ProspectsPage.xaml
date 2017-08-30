@@ -28,6 +28,7 @@
                                 <ColumnDefinition Width="Auto"></ColumnDefinition>
                                 <ColumnDefinition Width="*"></ColumnDefinition>
                             </Grid.ColumnDefinitions>
+
                             <controls:CircleImage 
                                 Source="{Binding ImageFullPath}" 
                                 Aspect="AspectFill"

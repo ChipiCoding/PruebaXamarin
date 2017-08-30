@@ -1,9 +1,11 @@
 ﻿namespace PruebaXamarin.ViewModels
 {
     using GalaSoft.MvvmLight.Command;
+    using HockeyApp;
     using PruebaXamarin.Classes;
     using PruebaXamarin.Models;
     using PruebaXamarin.Services;
+    using System.Collections.Generic;
     using System.Linq;
     using System.Text.RegularExpressions;
     using System.Windows.Input;
@@ -38,8 +40,8 @@
                         await dialogService.ShowMessage("Error", "The password is required.");
                         return;
                     }
-                    else                                            
-                        ValidateLogin();                                            
+                    else
+                        ValidateLogin();
                 }
             }
         }
@@ -49,6 +51,8 @@
             Classes.Response responseAutentication = await apiService.Autenticate<Classes.Response>("/application", "/login", Login);
             if (responseAutentication.IsSuccess)
             {
+                MetricsManager.TrackEvent("Lógin exitoso");
+
                 Prospect.GetProspects(responseAutentication.Result as Autorization);
                 if (SaveData)
                     SaveCredentials(Login);

@@ -1,6 +1,8 @@
 ﻿namespace PruebaXamarin.ViewModels
 {
+    using HockeyApp;
     using PruebaXamarin.Services;
+    using System.Collections.Generic;
 
     public class MainViewModel : BaseViewModel
     {
@@ -40,7 +42,7 @@
             return instance;
         }
         #endregion
-        
+
 
         #region Constructor
         public MainViewModel()
@@ -52,10 +54,11 @@
             {
                 LoginVM.Login.email = LoginVM.UserEmail;
                 LoginVM.Login.password = LoginVM.UserPassword;
-            }            
+            }
             apiService = new ApiService();
             DialogService = new DialogService();
-            navigationService = new NavigationService();            
+            navigationService = new NavigationService();
+            MetricsManager.TrackEvent("Pantalla inicial");
         }
         #endregion
     }

@@ -35,8 +35,7 @@
 
 
         private async void EditProspect()
-        {
-            NavigationService navigationService = new NavigationService();
+        {            
             if (ProspectSeleted != null)
                 await navigationService.Navigate("EditProspectPage");
             else
